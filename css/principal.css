@@ -1,0 +1,29 @@
+.login-fundo
+  {
+    width: 100%;
+    background: url(../img/fundo.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    color: white !important;
+    font-weight: bold !important;
+  }
+body{margin: 0;}
+.nav-cor{background-color: darkred !important; color: white !important;}
+.nav-cor a{color: white !important;}
+.dropdown-menu a{color: darkred !important;}
+.dropdown-menu a:focus{background-color: darkred !important; color: white !important;}
+.cxs-resumo{padding: 1em !important; min-height: 140px;}
+.div-tema-padrao{background-color: darkred !important; color: white !important;}
+.div-tema-estoque-ativo{background-color: #a82100 !important; color: white !important;}
+.div-tema-estoque-desatualizado{background-color: #7a4646 !important; color: white !important;}
+.btn-detalhes-matriculados{background-color: darkred; border: solid thin white; color: darkred !important; font-weight: 500 !important;}
+.cor-txt-padrao{color: darkred !important;}
+.listas-sistemas-principal{font-size: 0.8em !important;}
+.btn-editar{background-color: yellow !important; color: white;}
+.txt-branco{color: white !important;}
+.txt-preto{color: black !important;}
+.label-detalhes{font-weight: bold !important; color: darkred !important; font-size: 1em !important;}
+.cor-danger{color: darkred !important;}
+.cor-info{color: darkblue !important;}
+.cor-warning{color: darkorange !important;}
