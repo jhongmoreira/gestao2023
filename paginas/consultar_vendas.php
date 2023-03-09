@@ -41,6 +41,7 @@
       <th scope="col">Serviço</th>
       <th scope="col">Vencimento</th>
       <th scope="col">Valor</th>
+      <th scope="col">Ação</th>
     </thead>
       <tbody>
         <tr>
@@ -85,6 +86,9 @@
                         $valor_total = $dados['valor_unitario']*$dados['qnt'];
                         echo 'R$ '.number_format($valor_total,2, ',', '.'); 
                       ?>
+                    </td>
+                    <td>
+                      <a href="index.php?pg=18&cliente=<?php echo $dados['id'];?>&venda=<?php echo $dados['id_venda'];?>" class="button btn-sm btn-danger">Editar</a>
                     </td>
           </tr>
             <?php
