@@ -54,8 +54,16 @@ $banco = new BancoDeDados;
                             Faturar
                         </a>
                         <a class="nav-link" href="index.php?pg=7">
-                            <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fa fa-credit-card"></i></div>
                             Vender
+                        </a>
+                        <a class="nav-link" href="index.php?pg=12">
+                            <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                            Ordens de Serviço
+                        </a>
+                        <a class="nav-link" href="index.php?pg=2">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
+                            Cadastrar Cliente
                         </a>
                         <div class="sb-sidenav-menu-heading">Gestão</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

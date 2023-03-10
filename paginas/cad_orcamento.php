@@ -6,7 +6,7 @@
 <!-- Título -->
 <div class="row p-2">
   <div class="col-md-12 cor-txt-padrao">
-    <h5><li class="fa fa-user-plus"></li> Cadastrar Orçamento</h5>
+    <h5><li class="fas fa-list"></li> Cadastrar Ordem de Serviço</h5>
     <hr/>
   </div>
 </div>
@@ -28,7 +28,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label for="idEmpresa">Empresa: </label>
+        <label for="idEmpresa">Cliente: </label>
             <select class="form-control" required="" name="empresa" id="idCliente">
                 <option></option>
                 <?php
@@ -45,7 +45,7 @@
 
     <div class="col-md-3">
       <div class="form-group">
-      <label for="idDataOrcamento">Data Orçamento:</label>
+      <label for="idDataOrcamento">Data de Início:</label>
           <input class="form-control" type="date" name="dt_orcamento" id="idDataOrcamento" required=""/>
       </div>
     </div>
@@ -61,9 +61,9 @@
       {
         $empresa = addslashes($_POST["empresa"]);
         $data_orcamento = addslashes($_POST["dt_orcamento"]);
-        $status_orcamento = 1;
+        $status_orcamento = 0;
 
-        $banco->query("INSERT INTO orcamento VALUES('', '$empresa', '$data_orcamento', '$status_orcamento')");
+        $banco->query("INSERT INTO orcamento VALUES('', '$empresa', '$data_orcamento', '$status_orcamento', '')");
         
 
         $total = $banco->linhas();
@@ -83,14 +83,14 @@
 
 <div class="row mt-5">
   <div class="col-md-12">
-    <h5 class="cor-txt-padrao"><li class="fa fa-clock"></li> Orçamentos em Abertos</h5>
+    <h5 class="cor-txt-padrao"><li class="fa fa-clock"></li> Ordens de Serviço</h5>
 <!-- Tabela -->
 <table id="exemple" class="table">
     <thead class="cor-txt-padrao">
       <th scope="col">N°:</th>
-      <th scope="col">Empresa</th>
+      <th scope="col">Cliente</th>
       <th scope="col">Data</th>
-      <th scope="col">Ações</th>
+      <th scope="col">Status</th>
     </thead>
       <tbody>
         <tr>
@@ -98,7 +98,7 @@
           <?php
 
 
-            $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id AND orcamento.status_orcamento = 1");
+            $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id ORDER BY id_orcamento");
 
             $total = $banco->linhas();
 
@@ -107,7 +107,7 @@
                 foreach ($banco->result() as $dados)
                 {
             ?>
-                  <td><?php echo $dados['id_orcamento']; ?></td>
+                  <td><a href="index.php?pg=13&orcamento=<?php echo $dados['id_orcamento']; ?>"><?php echo $dados['id_orcamento']; ?></a></td>
                   <td><?php echo $dados['nome']; ?></td>
                   <td>
                     <?php 
@@ -116,8 +116,17 @@
                     ?>
                   </td>
                   <td>
-                    <a href="index.php?pg=13&orcamento=<?php echo $dados['id_orcamento']; ?>"><button class="btn-primary btn-sm" type="button">Continuar</button></a>
-                    <a href="index.php?pg=12&orcamento=<?php echo $dados['id_orcamento']."&acao=apagar"; ?>"><button class="btn-danger btn-sm" type="button" value="1">Cancelar</button></a>
+                    <?php
+                      if ($dados['status_orcamento']==1){
+                        echo "<span class='text-success'><li class='fa fa-check-circle'></li></span>";
+                      }
+                      if ($dados['status_orcamento']==2){
+                        echo "<span class='text-danger'><li class='fa fa-times-circle'></li></a>";
+                      }
+                      if ($dados['status_orcamento']==0){
+                        echo "<span class='text-warning'><li class='fa fa-spinner fa-spin'></li></a>";
+                      }
+                    ?>
                   </td>
           </tr>
             <?php
@@ -136,7 +145,7 @@
 
         $num_orcamento = $_GET['orcamento'];
 
-        $banco->query("DELETE FROM orcamento WHERE id_orcamento = $num_orcamento");
+        $banco->query("UPDATE orcamento SET status_orcamento = 1 WHERE id_orcamento = '$num_orcamento'");
 
         $total = $banco->linhas();
 
