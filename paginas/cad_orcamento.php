@@ -11,6 +11,23 @@
   </div>
 </div>
 
+
+  <div class="row">
+    <div class="col-md-2 mb-4">
+      <a href="index.php?pg=12&action=finalizados"><button name="btnrelatorio" class="btn btn-success form-control"><li class="fa fa-check"></li> Finalizados</button></a>
+    </div>
+    <div class="col-md-2 mb-4">
+      <a href="index.php?pg=12&action="><button name="btnrelatorio" class="btn btn-primary form-control"><li class="fa fa-check"></li> Todos</button></a>
+    </div>
+    <div class="col-md-2 mb-4">
+      <a href="index.php?pg=12&action=pendente"><button name="btnrelatorio" class="btn btn-warning form-control"><li class="fa fa-check"></li> Pendente</button></a>
+    </div>
+    <div class="col-md-2 mb-4">
+      <a href="index.php?pg=12&action=parado"><button name="btnrelatorio" class="btn btn-danger form-control"><li class="fa fa-check"></li> Parados</button></a>
+    </div>
+  </div>
+
+
 <!-- DIV opções -->
 <form action="index.php?pg=12&action=salvar-registro" method="post" onsubmit="btnEnvia.disabled=true" autocomplete="off">
 
@@ -96,9 +113,32 @@
         <tr>
 
           <?php
-
-
+           if (!isset($_GET['action']))
+              {
+                $_GET['action'] = '';
+              }
+ 
+              $acao = $_GET["action"];
+ 
+          if ($acao == '')
+          {
             $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id ORDER BY id_orcamento");
+          }else{
+            if ($acao == 'finalizados')
+            {
+              $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id AND status_orcamento = 1 ORDER BY id_orcamento");
+            }
+          }
+
+          if ($acao == 'pendente')
+          {
+            $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id AND status_orcamento = 0 ORDER BY id_orcamento");
+          }
+
+          if ($acao == 'parado')
+          {
+            $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id AND status_orcamento = 3 ORDER BY id_orcamento");
+          }
 
             $total = $banco->linhas();
 
