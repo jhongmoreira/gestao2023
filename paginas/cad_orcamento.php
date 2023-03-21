@@ -14,10 +14,10 @@
 
   <div class="row">
     <div class="col-md-2 mb-4">
-      <a href="index.php?pg=12&action=finalizados"><button name="btnrelatorio" class="btn btn-success form-control"><li class="fa fa-check"></li> Finalizados</button></a>
+      <a href="index.php?pg=12&action="><button name="btnrelatorio" class="btn btn-primary form-control"><li class="fa fa-check"></li> Todos</button></a>
     </div>
     <div class="col-md-2 mb-4">
-      <a href="index.php?pg=12&action="><button name="btnrelatorio" class="btn btn-primary form-control"><li class="fa fa-check"></li> Todos</button></a>
+      <a href="index.php?pg=12&action=finalizados"><button name="btnrelatorio" class="btn btn-success form-control"><li class="fa fa-check"></li> Finalizados</button></a>
     </div>
     <div class="col-md-2 mb-4">
       <a href="index.php?pg=12&action=pendente"><button name="btnrelatorio" class="btn btn-warning form-control"><li class="fa fa-check"></li> Pendente</button></a>
@@ -32,9 +32,6 @@
 <form action="index.php?pg=12&action=salvar-registro" method="post" onsubmit="btnEnvia.disabled=true" autocomplete="off">
 
   <div class="row">
-    <div class="col-md-2 mb-4">
-      <button type="submit" name="btnEnvia" class="btn btn-info form-control"><li class="fa fa-plus"></li> Cadastrar</button>
-    </div>
 
     <div class="col-md-2 mb-8">
       <!-- Coluna ajuste -->
@@ -67,6 +64,12 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-2 mb-1">
+      <button type="submit" name="btnEnvia" class="btn btn-info form-control"><li class="fa fa-plus"></li> Cadastrar</button>
+    </div>
   </div>
 </form>
 
@@ -137,7 +140,7 @@
 
           if ($acao == 'parado')
           {
-            $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id AND status_orcamento = 3 ORDER BY id_orcamento");
+            $banco->query("SELECT * FROM clientes, orcamento WHERE orcamento.empresa_cod = clientes.id AND status_orcamento = 2 ORDER BY id_orcamento");
           }
 
             $total = $banco->linhas();
