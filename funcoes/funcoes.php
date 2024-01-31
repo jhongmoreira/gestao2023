@@ -34,7 +34,7 @@
     }
 
     function moedaBR($valor_dinheiro){
-        $valor_final = number_format($valor_dinheiro,2, ',', '.');
+        $valor_final = @number_format($valor_dinheiro,2, ',', '.');
         echo 'R$ '.$valor_final;
     }
 
