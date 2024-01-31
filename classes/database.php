@@ -10,10 +10,10 @@ if (!class_exists('BancoDeDados')) {
     public function __construct()
     {
       try {
-        $host = '172.106.0.118';
-        $usuario = 'os_user';
-        $senha = '@Bac#te25';
-        $db = 'os_db';
+        $host = '108.181.92.66';
+        $usuario = 'aloha';
+        $senha = 'Rwx198775';
+        $db = 'gestao_aloha';
 
         $this->banco = $db;
         $this->pdo = new PDO("mysql:dbname=" . $db . ";host=" . $host, $usuario, $senha);
