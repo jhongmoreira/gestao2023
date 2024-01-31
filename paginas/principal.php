@@ -35,7 +35,7 @@
                             $banco->query("SELECT SUM(valor_unitario*qnt) as soma FROM vendas WHERE pago = 0");
                             $valor = $banco->linhas();
                             foreach ($banco->result() as $dados);          
-                            echo moedaBR($dados["soma"]); 
+                            echo @moedaBR(@$dados["soma"]); 
                         ?> 
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             $banco->query("SELECT SUM(valor_unitario*qnt) as soma FROM vendas WHERE pago = 1");
                             $valor = $banco->linhas();
                             foreach ($banco->result() as $dados);          
-                            echo @moedaBR($dados["soma"]); 
+                            echo @moedaBR(@$dados["soma"]); 
                         ?> 
                     </div>
                 </div>
