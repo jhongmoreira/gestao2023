@@ -77,6 +77,26 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <label class="label-detalhes mb-0" for="obs">Pasta do Drive:</label>
+      <div id="obs">
+
+        <?php
+          if ($dados["drive"] == '')
+          {
+            echo "<i>Nenhuma pasta foi cadastrada para este cliente.</i>";
+          }else
+
+          {
+            echo "<a href='$dados[drive]' target='_blank'>Acessar</a>";
+          }
+        ?>
+
+      </div>
+  </div>
+</div>
+
 <hr>
 
 <div class="row">
