@@ -74,6 +74,13 @@
           <input class="form-control" type="email" name="email" id="idEmail"/>
       </div>
     </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="idDrive">Pasta do Drive:</label>
+          <input class="form-control" type="url" name="drive" id="idDrive" required/>
+      </div>
+    </div>
   </div>
 
   <hr/>
@@ -103,8 +110,9 @@
         $email = addslashes($_POST["email"]);
         $juridica = addslashes($_POST["tipoempresa"]);
         $obs = addslashes($_POST["obs"]);
+        $drive = addslashes($_POST["drive"]);
 
-        $banco->query("INSERT INTO clientes VALUES('', '$nome', '$cnpj', '$telefone', '$celular', '$email', '$juridica', '$obs')");
+        $banco->query("INSERT INTO clientes VALUES('', '$nome', '$cnpj', '$telefone', '$celular', '$email', '$juridica', '$obs', '$drive')");
 
         $total = $banco->linhas();
 

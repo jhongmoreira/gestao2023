@@ -185,6 +185,7 @@
     <label class="label-detalhes mb-0" for="idFoto"><b>Arquivo:</b></label>
       <div id="idFoto">
         <?php
+          $img_upload=($dados['img']);
           if (@$img_upload == ''){
             echo "Nada anexado";
           }else{
